@@ -1,0 +1,2345 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MASTERY ENGLISH</title>
+
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-7X2KN6HX03"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'G-7X2KN6HX03');
+
+function registrarEvento(nombre, datos = {}) {
+    const evento = {
+        pagina: location.pathname,
+        url: location.href,
+        titulo: document.title,
+        fecha: new Date().toISOString(),
+        ...datos
+    };
+    console.log("Enviando evento:", nombre, evento);
+    if (typeof gtag === "function") {
+        gtag("event", nombre, evento);
+        console.log("Evento enviado correctamente.");
+    } else {
+        console.error("gtag no está disponible.");
+    }
+}
+
+   const Analytics = {
+    evento(nombre, datos = {}) {
+        registrarEvento(nombre, datos);
+    }
+};
+    
+</script>
+
+    <!-- Facebook -->
+<meta property="og:title" content="MASTERY ENGLISH">
+<meta property="og:description" content="Aprende inglés como si fuera un videojuego.">
+<meta property="og:image" content="https://dayamaja.github.io/Mastery/portada-mastery.png.png">
+<meta property="og:url" content="https://dayamaja.github.io/Mastery/">
+<meta property="og:type" content="website">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="MASTERY ENGLISH">
+<meta name="twitter:description" content="Aprende inglés como si fuera un videojuego.">
+<meta name="twitter:image" content="https://dayamaja.github.io/Mastery/portada-mastery.png.png">
+
+    <!-- ICONOS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- CSS UNIFICADO -->
+    <style>
+        /* ===== RESET ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* BODY Y MODO OSCURO */
+        body {
+            background: #f4f4f4;
+            color: #222;
+            transition: 0.3s;
+
+            padding-top: 40px;
+            padding-bottom: 80px;
+            /* para que bottom-nav no tape contenido */
+        }
+
+        .dark {
+            background: #121212;
+            color: white;
+        }
+
+
+        .top-bar {
+            position: fixed;
+            /* Se queda fija arriba */
+            top: 0;
+            /* Pegada al borde superior */
+            width: 100%;
+            /* Ocupa todo el ancho */
+            height: 60px;
+            /* Altura definida */
+            background: #ff5f00;
+            /* Color naranja */
+
+            display: flex;
+            /* Activa flexbox */
+            justify-content: space-between;
+            /* Separa extremos */
+            align-items: center;
+            /* Centra verticalmente */
+            padding: 0 20px;
+            /* Espacio lateral */
+            color: white;
+            z-index: 1000;
+            /* Siempre encima */
+        }
+
+        .spacer {
+            width: 60px;
+            /* mismo ancho que el botón */
+        }
+
+        .libra-text {
+            font-weight: 600;
+            font-size: 18px;
+            letter-spacing: 2px;
+
+            /* Degradado dorado tipo oro real */
+            background: linear-gradient(90deg, #fff6d5, #f7c948, #b8860b, #5c3b00);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            /* Glow sutil */
+            text-shadow: 0 0 6px rgba(255, 215, 0, 0.4);
+
+            text-align: center;
+        }
+
+        .top-bar button {
+            width: 60px;
+            /* igual que el spacer */
+            height: 100%;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        /* ================================== */
+        /* ===== sección del contenedor de 3 etiquetas ======== */
+        /* ================================== */
+
+        /* TAGS */
+        .tags-container {
+            position: fixed;
+            top: 60px;
+            width: 100%;
+            background: white;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 10px;
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            z-index: 999;
+        }
+
+        .tag {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 1px 4px;
+            /* menos espacio dentro de cada etiqueta */
+            border-radius: 16px;
+            /* esquinas menos grandes si quieres */
+            font-size: 11px;
+            /* texto más pequeño */
+            background: #eaeaea;
+            transition: all 0.25s ease;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .tag:hover {
+            background: #6a00ff;
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(106, 0, 255, 0.4);
+        }
+
+        .tag:active {
+            transform: scale(0.95);
+        }
+
+        .dark .tags-container {
+            background: #1e1e1e;
+            border-bottom: 1px solid #333;
+        }
+
+        .dark .tag {
+            background: #333;
+            color: white;
+        }
+
+
+                            /* ===================================== */
+                            /* MODAL INSTALAR APP */
+                            /* ===================================== */
+
+                    .modal-instalar{
+
+                        display:none;
+
+                        position:fixed;
+
+                        top:0;
+
+                        left:0;
+
+                        width:100%;
+
+                        height:100%;
+
+                        background:rgba(0,0,0,.75);
+
+                        justify-content:center;
+
+                        align-items:center;
+
+                        z-index:9999;
+
+                        animation:fadeIn .3s;
+
+                    }
+
+                    /* Caja */
+
+                    .modal-contenido{
+
+                        width:90%;
+
+                        max-width:420px;
+
+                        background:linear-gradient(180deg,#23234d,#111126);
+
+                        border:2px solid #9f5cff;
+
+                        border-radius:22px;
+
+                        padding:30px;
+
+                        text-align:center;
+
+                        color:white;
+
+                        box-shadow:0 0 35px rgba(162,84,255,.7);
+
+                        position:relative;
+
+                    }
+
+                    /* Título */
+
+                    .modal-contenido h2{
+
+                        margin-top:0;
+
+                        color:#ffd95e;
+
+                        font-size:28px;
+
+                    }
+
+                    /* Texto */
+
+                    .modal-contenido p{
+
+                        color:#dddddd;
+
+                        line-height:1.6;
+
+                    }
+
+                    /* Lista */
+
+                    .modal-contenido ul{
+
+                        list-style:none;
+
+                        padding:0;
+
+                        margin:25px 0;
+
+                    }
+
+                    .modal-contenido li{
+
+                        margin:12px 0;
+
+                        font-size:17px;
+
+                    }
+
+                    /* Botón */
+
+                    .btn-instalar{
+
+                        background:linear-gradient(90deg,#7b2cff,#b85cff);
+
+                        color:white;
+
+                        border:none;
+
+                        padding:15px 28px;
+
+                        border-radius:40px;
+
+                        cursor:pointer;
+
+                        font-size:18px;
+
+                        font-weight:bold;
+
+                        transition:.3s;
+
+                    }
+
+                    .btn-instalar:hover{
+
+                        transform:scale(1.05);
+
+                        box-shadow:0 0 20px #b85cff;
+
+                    }
+
+                    /* X */
+
+                    .cerrar-modal{
+
+                        position:absolute;
+
+                        right:18px;
+
+                        top:10px;
+
+                        font-size:32px;
+
+                        cursor:pointer;
+
+                        color:white;
+
+                    }
+
+                    .cerrar-modal:hover{
+
+                        color:#ffd95e;
+
+                    }
+
+                    /* Animación */
+
+                    @keyframes fadeIn{
+
+                        from{
+
+                            opacity:0;
+
+                        }
+
+                        to{
+
+                            opacity:1;
+
+                        }
+
+                    }
+
+
+        /* ================== ETIQUETAS LINEALES EN CELULAR ================== */
+
+        @media (max-width: 480px) {
+            .tags-container {
+                display: flex;
+                /* Flexbox */
+                flex-wrap: nowrap !important;
+                /* Forzar que no se rompa */
+                overflow-x: auto;
+                /* Scroll horizontal si no caben */
+                -webkit-overflow-scrolling: touch;
+                /* Suaviza scroll en iOS */
+                gap: 10px;
+                /* Separación entre etiquetas */
+                padding: 8px 10px;
+                /* Ajusta espacio interno */
+            }
+
+            .tag {
+                flex: 0 0 auto;
+                /* Mantener tamaño de etiqueta */
+                white-space: nowrap;
+                /* Evitar que el texto se rompa */
+                padding: 6px 12px;
+                /* Más compacto */
+                font-size: 12px;
+                /* Tamaño más pequeño */
+                border-radius: 16px;
+                /* Opcional: redondeo más pequeño */
+            }
+
+            /* Ocultar scrollbar opcional */
+            .tags-container::-webkit-scrollbar {
+                display: none;
+            }
+        }
+
+        /* ================================== */
+        /* ===== SECCIÓN TITULO DE LA CARD ======== */
+        /* ================================== */
+
+        /* Contenedor liga con color cobre */
+        .liga-container {
+            position: relative;
+            max-width: 300px;
+            margin: 10px auto 10px auto;
+            /* 20px arriba, auto a los lados, 20px abajo */
+            ;
+            padding: 20px 18px;
+            background: #B87333;
+            /* color cobre sólido */
+            border-radius: 18px;
+            text-align: center;
+
+            /* Glow sutil y sombra */
+            box-shadow: 0 6px 20px rgba(184, 115, 51, 0.6), 0 0 40px rgba(184, 115, 51, 0.3);
+
+            /* Flex layout */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            /* Transiciones */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            color: white;
+            /* todo texto blanco */
+        }
+
+        /* Títulos y párrafos dentro del contenedor */
+        .liga-container h2,
+        .liga-container p {
+            color: white;
+            /* aseguramos que sean blancos */
+            text-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+            /* opcional: sutil sombra para legibilidad */
+        }
+
+        /* Botón dentro de la liga */
+        .liga-button {
+            padding: 10px 22px;
+            background: linear-gradient(135deg, #ffb74d, #ff6f00);
+            color: #fff;
+            /* texto blanco */
+            font-weight: 700;
+            border: none;
+            border-radius: 14px;
+            cursor: pointer;
+            box-shadow: 0 6px 18px rgba(255, 111, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        .liga-button:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 10px 25px rgba(255, 111, 0, 0.8);
+        }
+
+        /* Notas musicales flotantes */
+        .music-notes {
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 6px;
+        }
+
+        .music-notes span {
+            font-size: 16px;
+            animation: floatNotes 2s ease-in-out infinite alternate;
+        }
+
+        .music-notes span:nth-child(2) {
+            animation-delay: 0.3s;
+        }
+
+        .music-notes span:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+
+        @keyframes floatNotes {
+            0% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-6px) rotate(10deg);
+            }
+
+            100% {
+                transform: translateY(0) rotate(-10deg);
+            }
+        }
+
+        /* Modo oscuro */
+        body.dark .liga-container {
+            background: linear-gradient(135deg, #8f3dff, #c266ff);
+            box-shadow: 0 6px 20px rgba(143, 61, 255, 0.8), 0 0 40px rgba(143, 61, 255, 0.5);
+        }
+
+        body.dark .liga-button {
+            background: linear-gradient(135deg, #e52e71, #6a00ff);
+            box-shadow: 0 6px 18px rgba(155, 0, 255, 0.6);
+        }
+
+
+        /* ================================== */
+        /* =====FINAL DE  SECCIÓN TITULO DE LA CARD ======== */
+        /* ================================== */
+
+
+        /* ================================== */
+        /* =====INICIO DE LA TARGETA DEL CABALLERO ======== */
+        /* ================================== */
+
+
+        /* ===== COSMIC CARD ===== */
+        .cosmic-card {
+            margin: 10px auto 10px auto;
+            /* 20px arriba, auto a los lados, 20px abajo */
+            ;
+            max-width: 600px;
+            text-align: center;
+            padding: 25px;
+            border-radius: 20px;
+
+            background: linear-gradient(135deg, #0f0f1a, #1a0033);
+            color: white;
+
+            box-shadow: 0 0 30px rgba(155, 0, 255, 0.4);
+
+            position: relative;
+            z-index: 1;
+        }
+
+        /* IMAGEN DEL CABALLERO - ESTÁTICO CON GLOW */
+        .cosmic-knight {
+            width: 160px;
+            /* tamaño más adecuado */
+            margin-bottom: 0;
+            border-radius: 12px;
+            /* opcional, suaviza bordes */
+            box-shadow: 0 0 20px rgba(0, 140, 255, 0.6);
+            /* glow azul */
+            /* ANIMACIÓN ELIMINADA */
+        }
+
+
+        .cosmic-card::before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            /* 👈 esto es lo importante */
+            width: 300%;
+            height: 300%;
+            top: -100%;
+            left: -100%;
+            background: radial-gradient(circle, rgba(0, 170, 255, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        /* TEXTO */
+        .cosmic-text h2 {
+            font-family: 'Comic Sans MS', 'Arial', sans-serif;
+            font-size: 28px;
+            text-align: center;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            background: linear-gradient(90deg, #b87333, #ffd700);
+            /* amarillo-cobre */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 0 8px rgba(184, 115, 51, 0.6), 0 0 15px rgba(255, 215, 0, 0.4);
+        }
+
+        .cosmic-text p {
+            color: white;
+            /* párrafo en blanco */
+            font-size: 15px;
+            /* tamaño del párrafo */
+            line-height: 1.5;
+        }
+
+        /* ===== RESPONSIVE MÓVILES ===== */
+        @media (max-width: 480px) {
+            .cosmic-card {
+                flex-direction: column;
+                /* apilar imagen y texto */
+                align-items: center;
+                /* centrar horizontalmente */
+                padding: 20px 15px;
+                width: 90%;
+                /* que no se salga de pantalla */
+                margin: 30px auto 40px auto;
+                /* margen superior extra para top-bar y tags */
+                gap: 10px;
+                /* menos espacio entre imagen y texto */
+            }
+
+            .cosmic-knight {
+                width: 120px;
+                /* imagen más pequeña */
+                margin-bottom: 15px;
+            }
+
+            .cosmic-text h2 {
+                font-size: 16px;
+                /* título más pequeño */
+                text-align: center;
+                /* centrar texto */
+            }
+
+            .cosmic-text p {
+                font-size: 12px;
+                /* párrafo más pequeño */
+                text-align: center;
+                /* centrar texto */
+            }
+        }
+
+        /* ====================================== */
+        /* =====FINAL DE  LA TARGETA DEL CABALLERO ======== */
+        /* ====================================== */
+
+
+        /* ===== CLASSES ===== */
+        .class-box {
+            display: block;
+            background: white;
+            padding: 20px;
+            border-radius: 16px;
+            margin: 0 auto 12px auto;
+            max-width: 650px;
+            /* 👈 evita que ocupe todo el ancho */
+            text-align: center;
+
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+            cursor: pointer;
+            will-change: transform;
+        }
+
+        .class-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0, 123, 255, 0.2);
+        }
+
+        .class-box:active {
+            transform: scale(0.97);
+        }
+
+        /* ===== DARK MODE ===== */
+        .dark .class-box {
+            background: #1c1c1c;
+            /* un poco más suave que #1e1e1e */
+            color: #f5f5f5;
+            /* blanco menos agresivo */
+            border: 1px solid rgba(255, 255, 255, 0.06);
+
+            box-shadow:
+                0 6px 18px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.02) inset;
+            /* detalle interno sutil */
+
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+        }
+
+        .dark .class-box:hover {
+            box-shadow:
+                0 12px 28px rgba(0, 0, 0, 0.6),
+                0 0 20px rgba(0, 123, 255, 0.15);
+            /* glow sutil en hover */
+        }
+
+
+        /* ===== VIDEO WRAPPER (más elegante y compacto) ===== */
+        .video-wrapper {
+            position: relative;
+            width: 88%;
+            /* un poco más contenido */
+            max-width: 520px;
+            /* ligeramente más compacto */
+            margin: 18px auto 0 auto;
+
+            aspect-ratio: 16 / 9;
+            /* 👈 mejor que padding-bottom */
+            overflow: hidden;
+
+            border-radius: 14px;
+            background: #000;
+            /* fondo elegante mientras carga */
+
+            box-shadow:
+                0 10px 25px rgba(0, 0, 0, 0.25),
+                0 0 0 1px rgba(0, 0, 0, 0.05);
+
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .video-wrapper:hover {
+            transform: scale(1.02);
+            box-shadow:
+                0 14px 35px rgba(0, 0, 0, 0.35);
+        }
+
+        .video-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+            display: block;
+        }
+
+        /* ===== NOTICE ===== */
+        .notice {
+            background: linear-gradient(135deg, #ffd84d, #ffb300);
+            padding: 16px 18px;
+            border-radius: 14px;
+            margin: 0 auto 25px auto;
+            max-width: 650px;
+
+            font-weight: 600;
+            color: #222;
+
+            box-shadow: 0 6px 18px rgba(255, 179, 0, 0.25);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+
+            transition: transform 0.25s ease, box-shadow 0.25s ease;
+        }
+
+        .notice:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(255, 179, 0, 0.35);
+        }
+
+
+        /* ===== BOTTOM NAV ===== */
+        .bottom-nav {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            height: 65px;
+
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(8px);
+
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.08);
+
+            z-index: 1000;
+        }
+
+
+        /* ===== NAV ITEMS ===== */
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            font-size: 11px;
+            font-weight: 500;
+
+            padding: 6px 12px;
+            border-radius: 14px;
+
+            cursor: pointer;
+
+            transition: transform 0.2s ease, background 0.2s ease;
+        }
+
+        .nav-item i {
+            font-size: 20px;
+            margin-bottom: 3px;
+            color: #ff9900;
+
+            transition: transform 0.2s ease, color 0.2s ease;
+        }
+
+        .nav-item span {
+            color: #007bff;
+            transition: color 0.2s ease;
+        }
+
+        .nav-item:hover {
+            transform: translateY(-3px);
+            background: rgba(0, 123, 255, 0.1);
+        }
+
+        .nav-item:hover i {
+            transform: scale(1.15);
+            color: #007bff;
+        }
+
+        .nav-item:active {
+            transform: scale(0.92);
+        }
+
+
+        /* ===== DARK MODE NAV ===== */
+        .dark .bottom-nav {
+            background: rgba(20, 20, 20, 0.95);
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.6);
+        }
+
+        .dark .nav-item i,
+        .dark .nav-item span {
+            color: #f0f0f0;
+        }
+
+
+        /* ===== LESSON BUTTON ===== */
+        .lesson-button {
+            display: block;
+            width: 85%;
+            max-width: 480px;
+            margin: 15px auto 0 auto;
+
+            padding: 14px 28px;
+
+            background: linear-gradient(135deg, #39ff14, #00d90a);
+            color: #000;
+
+            font-weight: 700;
+            font-size: 16px;
+            text-align: center;
+
+            border-radius: 14px;
+            text-decoration: none;
+
+            box-shadow: 0 8px 20px rgba(0, 255, 20, 0.35);
+            border: none;
+
+            cursor: pointer;
+
+            transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+        }
+
+        .lesson-button:hover {
+            background: linear-gradient(135deg, #9b00ff, #6a00cc);
+            color: white;
+
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(155, 0, 255, 0.5);
+        }
+
+        .lesson-button:active {
+            transform: scale(0.96);
+            box-shadow: 0 6px 15px rgba(155, 0, 255, 0.4);
+        }
+
+        /* ============================= */
+        /* ===== SECCIÓN MELODÍAS ===== */
+        /* ============================= */
+
+        .melodias-section {
+            margin-top: 20px;
+            padding: 20px 0;
+
+            /* Fondo sutil para separar visualmente la sección */
+            background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.03));
+        }
+
+        .dark .melodias-section {
+            background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.03));
+        }
+
+
+        /* ===== TÍTULO ===== */
+
+        .melodias-title {
+            text-align: center;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+            margin-bottom: 30px;
+
+            /* Pequeño efecto visual */
+            position: relative;
+        }
+
+        .melodias-title::after {
+            content: "";
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, #39ff14, #9b00ff);
+            display: block;
+            margin: 10px auto 0 auto;
+            border-radius: 10px;
+        }
+
+
+        /* ===== CONTENEDOR CARRUSEL ===== */
+
+        .carousel-container {
+            overflow-x: auto;
+            scroll-behavior: smooth;
+            padding-bottom: 15px;
+
+            /* Scroll más limpio */
+            scrollbar-width: none;
+            /* Firefox */
+        }
+
+        .carousel-container::-webkit-scrollbar {
+            display: none;
+            /* Chrome */
+        }
+
+
+        /* ===== TRACK FLEX ===== */
+
+        .carousel-track {
+            display: flex;
+            gap: 25px;
+            padding: 0 25px;
+        }
+
+
+        /* ===== TARJETA MELODÍA ===== */
+
+        .melodia-card {
+            min-width: 280px;
+            max-width: 320px;
+            flex-shrink: 0;
+
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 18px;
+
+            /* Profundidad mejorada */
+            box-shadow:
+                0 10px 25px rgba(0, 0, 0, 0.08),
+                0 5px 10px rgba(0, 0, 0, 0.04);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        .melodia-card:hover {
+            transform: translateY(-8px);
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.12),
+                0 10px 20px rgba(0, 0, 0, 0.06);
+        }
+
+
+        /* ===== DARK MODE TARJETA ===== */
+
+        .dark .melodia-card {
+            background: #1e1e1e;
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.6);
+        }
+
+
+        /* ===== VIDEO WRAPPER (VERSIÓN MODERNA) ===== */
+
+        .video-wrapper {
+            aspect-ratio: 16 / 9;
+            /* 👈 Mejor que padding-bottom */
+            width: 100%;
+            overflow: hidden;
+            border-radius: 12px;
+        }
+
+        .video-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: 0;
+        }
+
+
+        /* ===== BOTÓN MELODÍA ===== */
+
+        .melodia-button {
+            display: block;
+            margin: 15px auto 0 auto;
+            padding: 12px 18px;
+            text-align: center;
+
+            font-weight: 700;
+            font-size: 14px;
+
+            border-radius: 12px;
+            text-decoration: none;
+
+            background: linear-gradient(135deg, #39ff14, #00d90a);
+            color: #000;
+
+            box-shadow: 0 8px 20px rgba(0, 255, 20, 0.3);
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease,
+                background 0.25s ease;
+        }
+
+        .melodia-button:hover {
+            background: linear-gradient(135deg, #9b00ff, #6a00cc);
+            color: #fff;
+
+            transform: translateY(-4px);
+            box-shadow: 0 12px 30px rgba(155, 0, 255, 0.4);
+        }
+
+        .melodia-button:active {
+            transform: scale(0.96);
+        }
+
+        /* ================================== */
+        /* ===== NEUROLEARNING CARD 9.5 ===== */
+        /* ================================== */
+
+        #neurolearningCard {
+
+            margin: 40px auto 30px auto;
+            padding: 35px 28px;
+            max-width: 720px;
+
+            border-radius: 22px;
+
+            /* Gradiente más vibrante y profundo */
+            background: linear-gradient(135deg, #ff8a00, #e52e71 55%, #6a00ff);
+
+            color: white;
+            text-align: center;
+
+            position: relative;
+            overflow: hidden;
+
+            /* Glow exterior + profundidad */
+            box-shadow:
+                0 20px 60px rgba(229, 46, 113, 0.35),
+                0 15px 35px rgba(0, 0, 0, 0.25);
+
+            transition:
+                transform 0.35s ease,
+                box-shadow 0.35s ease;
+        }
+
+
+        /* ✨ Borde luminoso animado sutil */
+        #neurolearningCard::before {
+            content: "";
+            position: absolute;
+            inset: -2px;
+            border-radius: 24px;
+            padding: 2px;
+
+            background: linear-gradient(90deg,
+                    #ff8a00,
+                    #e52e71,
+                    #6a00ff,
+                    #ff8a00);
+
+            background-size: 300% 300%;
+            animation: borderFlow 6s linear infinite;
+
+            -webkit-mask:
+                linear-gradient(#000 0 0) content-box,
+                linear-gradient(#000 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+        }
+
+
+        /* 🌟 Luz interna suave */
+        #neurolearningCard::after {
+            content: "";
+            position: absolute;
+            top: -40%;
+            left: -40%;
+            width: 180%;
+            height: 180%;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.18), transparent 65%);
+            pointer-events: none;
+        }
+
+
+        /* Animación del borde */
+        @keyframes borderFlow {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            100% {
+                background-position: 300% 50%;
+            }
+        }
+
+
+        /* Hover más elegante */
+        #neurolearningCard:hover {
+            transform: translateY(-10px);
+            box-shadow:
+                0 30px 80px rgba(229, 46, 113, 0.5),
+                0 20px 45px rgba(0, 0, 0, 0.35);
+        }
+
+
+        /* ===== TÍTULO ===== */
+
+        #neurolearningCard h2 {
+            font-size: 24px;
+            font-weight: 800;
+            margin-bottom: 12px;
+            letter-spacing: 0.7px;
+        }
+
+
+        /* ===== TEXTO ===== */
+
+        #neurolearningCard p {
+            font-size: 17px;
+            margin-bottom: 25px;
+            opacity: 0.95;
+        }
+
+
+        /* ===== BOTÓN PREMIUM ===== */
+
+        .neuro-button {
+
+            display: inline-block;
+            padding: 15px 32px;
+
+            font-size: 16px;
+            font-weight: 800;
+            letter-spacing: 0.5px;
+
+            border-radius: 16px;
+            text-decoration: none;
+
+            background: white;
+            color: #e52e71;
+
+            box-shadow:
+                0 12px 30px rgba(0, 0, 0, 0.3);
+
+            transition:
+                transform 0.3s ease,
+                box-shadow 0.3s ease,
+                background 0.3s ease,
+                color 0.3s ease;
+        }
+
+        .neuro-button:hover {
+            background: linear-gradient(135deg, #e52e71, #6a00ff);
+            color: white;
+
+            transform: translateY(-5px) scale(1.03);
+            box-shadow:
+                0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .neuro-button:active {
+            transform: scale(0.96);
+        }
+
+        /* ================================== */
+        /* ===== SECCIÓN REVISTA PRO ======== */
+        /* ================================== */
+
+        .revista-section {
+            margin: 20px auto 30px;
+            padding: 35px 40px;
+            max-width: 1100px;
+
+            border-radius: 20px;
+
+            background: linear-gradient(135deg, #001f3f 0%, #003d8f 50%, #005eff 100%);
+
+            display: flex;
+            align-items: center;
+            gap: 40px;
+
+            color: #ffffff;
+
+            box-shadow:
+                0 15px 40px rgba(0, 0, 0, 0.35),
+                0 5px 15px rgba(0, 0, 0, 0.15);
+
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+        }
+
+        .revista-section:hover {
+            transform: translateY(-8px);
+            box-shadow:
+                0 25px 60px rgba(0, 0, 0, 0.4),
+                0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ===== IMAGEN ===== */
+
+        .revista-img {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+        }
+
+        .revista-img img {
+            width: 100%;
+            max-width: 320px;
+            border-radius: 16px;
+
+            box-shadow:
+                0 12px 30px rgba(0, 0, 0, 0.4);
+
+            transition: transform 0.3s ease;
+        }
+
+        .revista-section:hover .revista-img img {
+            transform: scale(1.05);
+        }
+
+        /* ===== CONTENIDO ===== */
+
+        .revista-content {
+            flex: 1;
+        }
+
+        .revista-content h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .revista-content p {
+            font-size: 17px;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            opacity: 0.95;
+        }
+
+        /* ===== BOTÓN ===== */
+
+        .revista-button {
+            display: inline-block;
+            padding: 14px 28px;
+
+            background: #39ff14;
+            color: #000;
+
+            font-weight: 700;
+            border-radius: 14px;
+            text-decoration: none;
+
+            box-shadow:
+                0 8px 25px rgba(57, 255, 20, 0.45);
+
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease,
+                background 0.25s ease,
+                color 0.25s ease;
+        }
+
+        .revista-button:hover {
+            background: #9b00ff;
+            color: #fff;
+
+            transform: translateY(-4px);
+            box-shadow:
+                0 12px 35px rgba(155, 0, 255, 0.45);
+        }
+
+        .revista-button:active {
+            transform: scale(0.96);
+        }
+
+        /* ================================== */
+        /* ========= RESPONSIVE REAL ========= */
+        /* ================================== */
+
+        @media (max-width: 768px) {
+
+            .revista-section {
+                flex-direction: column;
+                text-align: center;
+                padding: 25px 20px;
+                gap: 25px;
+            }
+
+            .revista-content h2 {
+                font-size: 22px;
+            }
+
+            .revista-content p {
+                font-size: 15px;
+            }
+
+            .revista-img img {
+                max-width: 220px;
+            }
+        }
+
+        /* ================================== */
+        /* ===== SIDEBAR SUPREMACÍA PRO ===== */
+        /* ================================== */
+
+        /* CONTENEDOR PRINCIPAL */
+        .sidebar {
+            position: fixed;
+            top: 50%;
+            left: -220px;
+            /* oculto inicialmente */
+            transform: translateY(-50%);
+            width: 220px;
+
+            padding: 25px 15px;
+
+            border-radius: 0 25px 25px 0;
+
+            /* Fondo oscuro con profundidad */
+            background: linear-gradient(180deg,
+                    #0f0f1a 0%,
+                    #14142b 60%,
+                    #1b0033 100%);
+
+            /* Glow elegante y sombra profunda */
+            box-shadow:
+                0 0 40px rgba(155, 0, 255, 0.25),
+                0 0 80px rgba(106, 0, 255, 0.15),
+                inset 0 0 25px rgba(255, 255, 255, 0.03);
+
+            backdrop-filter: blur(12px);
+
+            transition:
+                left 0.5s cubic-bezier(.77, 0, .18, 1),
+                box-shadow 0.4s ease;
+
+            z-index: 1000;
+        }
+
+        /* Línea lateral luminosa */
+        .sidebar::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 3px;
+            height: 100%;
+
+            background: linear-gradient(to bottom,
+                    rgba(155, 0, 255, 0),
+                    rgba(155, 0, 255, 0.8),
+                    rgba(155, 0, 255, 0));
+
+            box-shadow: 0 0 20px rgba(155, 0, 255, 0.9);
+        }
+
+        /* Cuando se activa */
+        .sidebar.active {
+            left: 0;
+        }
+
+
+        /* ================================== */
+        /* ===== BOTÓN TOGGLE PREMIUM ======= */
+        /* ================================== */
+
+        .toggle-btn {
+            position: absolute;
+            right: -40px;
+            top: 50%;
+            transform: translateY(-50%);
+
+            width: 40px;
+            height: 70px;
+
+            border-radius: 0 15px 15px 0;
+
+            background: linear-gradient(180deg, #6a00ff, #9b00ff);
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 0 20px rgba(155, 0, 255, 0.6),
+                0 5px 20px rgba(0, 0, 0, 0.5);
+
+            transition: all 0.3s ease;
+        }
+
+        /* Efecto al pasar mouse */
+        .toggle-btn:hover {
+            box-shadow:
+                0 0 35px rgba(155, 0, 255, 0.9),
+                0 8px 30px rgba(0, 0, 0, 0.6);
+
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        /* Ícono */
+        .toggle-btn i {
+            color: #ffffff;
+            font-size: 20px;
+            transition: transform 0.3s ease;
+        }
+
+        /* Rotación cuando está activo */
+        .sidebar.active .toggle-btn i {
+            transform: rotate(180deg);
+        }
+
+
+        /* ================================== */
+        /* ===== ITEMS DEL SIDEBAR ========= */
+        /* ================================== */
+
+        .side-item {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+
+            padding: 12px 15px;
+            margin: 12px 0;
+
+            border-radius: 14px;
+
+            color: #ddd;
+            font-size: 15px;
+
+            transition:
+                background 0.3s ease,
+                transform 0.3s ease,
+                box-shadow 0.3s ease;
+        }
+
+        /* Íconos con color energético */
+        .side-item i {
+            font-size: 18px;
+            color: #9b00ff;
+        }
+
+        /* Hover elegante */
+        .side-item:hover {
+            background: rgba(155, 0, 255, 0.15);
+            transform: translateX(8px);
+
+            box-shadow: 0 0 15px rgba(155, 0, 255, 0.4);
+        }
+
+
+        /* ================================== */
+        /* ===== PORTAL NEUROELITE ========= */
+        /* ================================== */
+
+        /* Overlay oscuro con desenfoque */
+        #premiumOverlay {
+            display: none;
+            /* o */
+            pointer-events: none;
+            position: fixed;
+            inset: 0;
+
+            background:
+                radial-gradient(circle at center,
+                    rgba(106, 0, 255, 0.3),
+                    rgba(0, 0, 0, 0.9));
+
+            backdrop-filter: blur(8px);
+
+            z-index: 1999;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        /* Contenedor del portal */
+        #premiumContainer {
+            display: none;
+            position: fixed;
+
+            top: 50%;
+            left: 50%;
+
+            transform: translate(-50%, -50%) scale(0.7);
+
+            width: 90%;
+            max-width: 650px;
+
+            padding: 50px;
+
+            border-radius: 25px;
+
+            background:
+                radial-gradient(circle at top,
+                    #6a00ff,
+                    #240046 70%,
+                    #100020);
+
+            color: white;
+            text-align: center;
+
+            box-shadow:
+                0 0 60px rgba(155, 0, 255, 0.8),
+                0 0 120px rgba(106, 0, 255, 0.6),
+                inset 0 0 50px rgba(255, 255, 255, 0.05);
+
+            opacity: 0;
+
+            transition:
+                transform 0.6s cubic-bezier(.77, 0, .18, 1),
+                opacity 0.5s ease;
+
+            z-index: 2000;
+        }
+
+        /* Portal activo */
+        #premiumContainer.active {
+            transform: translate(-50%, -50%) scale(1);
+            opacity: 1;
+        }
+
+        /* Animación base */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+
+        /* ================================== */
+        /* ===== BANNER DORADO REFINADO ==== */
+        /* ================================== */
+
+        .golden-banner {
+            position: fixed;
+            top: 65px;
+            left: 50%;
+            transform: translateX(-50%);
+
+            padding: 12px 30px;
+
+            border-radius: 40px;
+
+            background: linear-gradient(90deg,
+                    #fff4c2,
+                    #ffd700,
+                    #ffb700);
+
+            box-shadow:
+                0 0 25px rgba(255, 215, 0, 0.8),
+                0 0 60px rgba(255, 215, 0, 0.5);
+
+            animation: goldenPulse 2.5s infinite ease-in-out alternate;
+
+            z-index: 1100;
+            pointer-events: none;
+        }
+
+        /* Texto del banner */
+        .golden-banner span {
+            font-family: 'Georgia', serif;
+            font-weight: 700;
+            font-size: 18px;
+            letter-spacing: 1.5px;
+
+            color: #fff8dc;
+
+            text-shadow:
+                0 0 10px rgba(255, 215, 0, 0.9),
+                0 0 20px rgba(255, 215, 0, 0.6);
+        }
+
+        /* Pulso dorado elegante */
+        @keyframes goldenPulse {
+            from {
+                box-shadow: 0 0 25px rgba(255, 215, 0, 0.7);
+            }
+
+            to {
+                box-shadow: 0 0 45px rgba(255, 215, 0, 1);
+            }
+        }
+
+
+        /* ================================== */
+        /* ===== RESPONSIVE OPTIMIZADO ===== */
+        /* ================================== */
+
+        @media (max-width: 480px) {
+
+            .sidebar {
+                width: 200px;
+            }
+
+            .golden-banner {
+                padding: 8px 15px;
+            }
+
+            .golden-banner span {
+                font-size: 14px;
+            }
+        }
+
+
+        /* ================================== */
+        /* ===== AJUSTE NEUROLEARNING ====== */
+        /* ================================== */
+
+        #neurolearningCard {
+            box-shadow: 0 0 30px rgba(106, 0, 255, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        #neurolearningCard:hover {
+            transform: scale(1.02);
+            box-shadow: 0 0 45px rgba(106, 0, 255, 0.8);
+        }
+
+        /* 🔧 PARCHE PARA ELIMINAR SCROLL HORIZONTAL EN MÓVIL
+        Evita que algún elemento desborde el viewport y
+        genere espacio en blanco hacia la derecha.
+        No afecta el diseño vertical. */
+
+        html,
+        body {
+            overflow-x: hidden;
+            max-width: 100%;
+        }
+
+        /* ====== ETIQUETAS CON ESTILO ÉPICO DARK ====== */
+
+        .tags-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin: 0px 0;
+        }
+
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 28px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: 600;
+            color: #ffffff;
+
+            /* Degradado tipo slider */
+            background: linear-gradient(135deg, #7b2cff, #b84dff);
+
+            box-shadow:
+                0 6px 20px rgba(123, 44, 255, 0.5);
+
+            transition: all 0.3s ease;
+        }
+
+        /* Hover tipo botón del slider */
+        .tag:hover {
+            transform: translateY(-4px);
+            box-shadow:
+                0 10px 30px rgba(123, 44, 255, 0.8);
+        }
+
+        /* Icono blanco limpio */
+        .tag i {
+            font-size: 16px;
+        }
+
+        /* ===== MODO OSCURO - TAGS GLOW MORADO ===== */
+
+        body.dark .tag {
+            background: linear-gradient(135deg, #8f3dff, #c266ff);
+
+            color: #ffffff;
+
+            box-shadow:
+                0 0 10px rgba(143, 61, 255, 0.8),
+                0 0 25px rgba(143, 61, 255, 0.6),
+                0 0 45px rgba(143, 61, 255, 0.4);
+        }
+
+        body.dark .tag:hover {
+            transform: translateY(-4px);
+
+            box-shadow:
+                0 0 15px rgba(143, 61, 255, 1),
+                0 0 35px rgba(143, 61, 255, 0.8),
+                0 0 60px rgba(143, 61, 255, 0.6);
+        }
+
+        /* Letras más brillantes */
+        body.dark .tag,
+        body.dark .tag i {
+            text-shadow: 0 0 8px rgba(255, 255, 255, 0.8);
+        }
+    </style>
+    
+    <link rel="manifest" href="manifest.json">
+  
+</head>
+
+<body>
+
+    <!-- TOP BAR -->
+
+    <div class="top-bar">
+        <div class="spacer"></div>
+        <span class="libra-text">⚖ Mastery English</span>
+        <button onclick="toggleDarkMode()">
+        <i class="fas fa-moon"></i>
+    </button>
+    </div>
+
+    <!-- TAGS -->
+    <div class="tags-container">
+                <a href="https://dayamaja.github.io/Stripe-Lab/"
+                   class="tag"
+                   onclick="Analytics.evento('suscripcion_paga_click');">
+                    <i class="fas fa-bell"></i> Llave Cósmica
+                </a>
+                <a href="https://revistacps.github.io/motordistribucionjuegos1/"
+                   class="tag"
+                   onclick="Analytics.evento('motor_juegos_click');">
+                    <i class="fas fa-gamepad"></i> Juegos
+                </a>
+                <a href="#"
+                   class="tag"
+                   onclick="Analytics.evento('descarga_app_click'); abrirModal(); return false;">
+                    <i class="fas fa-mobile-alt"></i> Instalar
+                </a>
+
+    </div>
+
+    <!-- ========================= -->
+    <!-- MODAL INSTALAR APP -->
+    <!-- ========================= -->
+
+<div id="modalInstalar" class="modal-instalar">
+
+    <div class="modal-contenido">
+
+        <span class="cerrar-modal" onclick="cerrarModal()">&times;</span>
+
+        <h2>📱 Instalar Mastery English</h2>
+
+        <p>
+            Para instalar <strong>Mastery English</strong>, abre esta misma página desde
+            <strong>Google Chrome</strong> y después pulsa nuevamente el botón
+            <strong>📱 Instalar</strong>.
+        </p>
+
+        <p style="margin-top:18px;">
+            Si abriste <strong>Mastery English</strong> desde la aplicación de
+            <strong>Facebook</strong>, <strong>Messenger</strong> o cualquier navegador
+            integrado, la instalación no estará disponible.
+        </p>
+
+        <p style="margin-top:18px;">
+            💙 Mientras tanto, visita nuestra comunidad en
+            <strong>Facebook</strong>, donde encontrarás nuevas clases,
+            avisos, actividades, actualizaciones y todas las novedades
+            de <strong>Mastery English</strong>.
+        </p>
+        <p style="margin-top:18px; font-weight:bold; color:#ffd95e;">
+        ✨ ¡Te esperamos en la aplicación para disfrutar la mejor experiencia!
+        </p>
+
+        <div style="margin-top:30px; display:flex; flex-direction:column; gap:15px;">
+
+            <a href="https://www.facebook.com/englishacademycps/"
+               target="_blank"
+               class="btn-instalar"
+               style="text-decoration:none; text-align:center;">
+
+                🌟 Descubre Mastery English en Facebook
+            </a>
+
+            <button
+                class="btn-instalar"
+                onclick="cerrarModal();">
+
+                ✅ Entendido
+
+            </button>
+
+        </div>
+
+    </div>
+
+</div>
+            
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+
+
+        <!--Boton de hacia arriba -->
+        <div class="liga-container" id="ligaContainer" style="background-color: orange; height: 50px;">
+            <h2>.</h2>
+        </div>
+        <!--Termino del boton de hacia arriba -->
+
+
+        <div class="cosmic-card">
+            <div class="cosmic-text">
+                <h2 class="cosmic-title">🌟 BRILLA 🌟</h2>
+                <p>
+                    -----------------------------------------<br>
+                    🌟 “Estas por iniciar tu camino al éxito” 🔮
+                </p>
+            </div>
+        </div>
+
+        <!-- CLASE 1 / VIDEO -->
+        <div class="class-box">
+            <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;">
+                <iframe
+                    src="https://www.youtube.com/embed/vi8C6Gpa1Ho?autoplay=1&mute=1&controls=0&loop=1&playlist=vi8C6Gpa1Ho"
+                    style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
+                    allow="autoplay; encrypted-media" allowfullscreen>
+                </iframe>
+            </div>
+            <h3 style="text-align:center; margin-top:10px;">Clase 1</h3>
+            <a href="https://revistacps.github.io/Video-megan-1/"
+               class="lesson-button"
+               onclick="Analytics.evento('clase1_click');">
+                Aprende una frase diaria con Megan
+            </a>
+        </div>
+
+        <!-- CLASE 2 / VIDEO -->
+        <div class="class-box">
+            <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;">
+                <video
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    controls
+                    preload="metadata"
+                    style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;border-radius:12px;">
+                 <source src="https://firebasestorage.googleapis.com/v0/b/app-libra-4746f.firebasestorage.app/o/Videos%20de%20app%20Mastery%20English%2FJack%20sparrow%201%20%5B1%5D.MP4?alt=media&token=f01c77a3-7f80-4568-a919-b281c3aab8e6"
+                  type="video/mp4">
+                                Tu navegador necesita actualizarse para reproducir este video.
+                  </video>
+            
+            </div>
+            <h3 style="text-align:center; margin-top:10px;">
+            🔥 ESTA ES LA NUEVA CLASE 2 🔥
+            </h3>
+            <a href="https://revistacps.github.io/Video-Jack-Sparrow-1/"
+               class="lesson-button"
+               onclick="Analytics.evento('clase2_click');">
+                Aprende una frase diaria con Jack Sparrow...
+            </a>
+        </div>
+
+        <!-- CLASE 3 / VIDEO -->
+        <div class="class-box">
+            <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;">
+                <iframe
+                    src="https://www.youtube.com/embed/GisjPwsvnAk?autoplay=1&mute=1&controls=0&loop=1&playlist=Nyw02xZFEH0"
+                    style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
+                    allow="autoplay; encrypted-media" allowfullscreen>
+                </iframe>
+            </div>
+            <h3 style="text-align:center; margin-top:10px;">Clase 3</h3>
+            <a href="https://revistacps.github.io/Kunfupanda1/"
+               class="lesson-button"
+               onclick="Analytics.evento('clase3_click');">
+                Aprende una frase diaria con Kung Fu Panda...
+            </a>
+        </div>
+
+        <!-- CLASE 4 / VIDEO -->
+        <div class="class-box">
+            <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;">
+                <iframe
+                    src="https://www.youtube.com/embed/GisjPwsvnAk?autoplay=1&mute=1&controls=0&loop=1&playlist=44w4FREZSwg"
+                    style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
+                    allow="autoplay; encrypted-media" allowfullscreen>
+                </iframe>
+            </div>
+            <h3 style="text-align:center; margin-top:10px;">Clase 4</h3>
+           <a href="https://revistacps.github.io/Eradehielo1/"
+               class="lesson-button"
+               onclick="Analytics.evento('clase4_click');">
+                Aprende una frase diaria con La Era De Hielo...
+            </a>
+        </div>
+
+        <!-- ===== MELODIAS / CARRUSEL ===== -->
+        <div class="melodias-section">
+
+            <h2 class="melodias-title">MELODÍAS</h2>
+
+            <div class="carousel-container">
+                <div class="carousel-track">
+
+                    <!-- ITEM 1 -->
+                    <div class="melodia-card">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/LDkRy6ISqrA" allowfullscreen></iframe>
+                        </div>
+                        <a href="https://revistacps.github.io/Melodia-Titanium/"
+                           class="melodia-button"
+                           onclick="Analytics.evento('melodia1_click');">
+                            Ver Melodía
+                        </a>
+                    </div>
+
+                    <!-- ITEM 2 -->
+                    <div class="melodia-card">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/LDkRy6ISqrA" allowfullscreen></iframe>
+                        </div>
+                        <a href="https://revistacps.github.io/Melodia-Titanium/"
+                           class="melodia-button"
+                           onclick="Analytics.evento('melodia2_click');">
+                            Escuchar Ahora
+                        </a>
+                    </div>
+
+                    <!-- ITEM 3 -->
+                    <div class="melodia-card">
+                        <div class="video-wrapper">
+                            <iframe src="https://www.youtube.com/embed/LDkRy6ISqrA" allowfullscreen></iframe>
+                        </div>
+                        <a href="https://revistacps.github.io/Melodia-Titanium/"
+                           class="melodia-button"
+                           onclick="Analytics.evento('melodia3_click');">
+                            Ir a la Letra
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- CLASE 5 / VIDEO -->
+        <div class="class-box">
+            <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;">
+                <iframe
+                    src="https://www.youtube.com/embed/GisjPwsvnAk?autoplay=1&mute=1&controls=0&loop=1&playlist=EATFzQIzHVQ"
+                    style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
+                    allow="autoplay; encrypted-media" allowfullscreen>
+                </iframe>
+            </div>
+            <h3 style="text-align:center; margin-top:10px;">Clase 5</h3>
+            <a href="https://revistacps.github.io/Acat1/"
+               class="lesson-button"
+               onclick="Analytics.evento('clase5_click');">
+                Aprende una frase diaria con A Cat...
+            </a>
+        </div>
+
+        <!-- CLASE 6 / VIDEO -->
+        <div class="class-box">
+            <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;">
+                <iframe
+                    src="https://www.youtube.com/embed/GisjPwsvnAk?autoplay=1&mute=1&controls=0&loop=1&playlist=qF_KQliAjx0"
+                    style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
+                    allow="autoplay; encrypted-media" allowfullscreen>
+                </iframe>
+            </div>
+            <h3 style="text-align:center; margin-top:10px;">Clase 6</h3>
+            <p>Si quieres mas videos como este, dirigete al area de "VIDEOS" en la pestaña luminosa... </p>
+        </div>
+
+        <!-- CONTENEDOR LIGA-COBRE -->
+        <div class="liga-container">
+            <div class="music-notes">
+                <span>🎵</span>
+                <span>🎶</span>
+                <span>🎵</span>
+            </div>
+            <h2>LIGA-COBRE</h2>
+            <p>“Despierta al Caballero que llevas dentro: ¡Tu Bronce te espera!”</p>
+            <button class="liga-button">✨"Sube tu poder"✨</button>
+        </div>
+
+
+        <div class="cosmic-card">
+            <img src="https://i.ibb.co/tMqrkKH5/Chat-GPT-Image-27-feb-2026-11-27-22-a-m.png"
+         alt="Guardián del Nivel"
+         class="cosmic-knight">
+
+            <div class="cosmic-text">
+                <h2 class="cosmic-title">🛡️ Liga Cobre: Libra</h2>
+                <p>
+                    ⚔️ Cada lección es un campo de batalla.<br>
+                🛡️ Cada práctica fortalece tu armadura.<br>
+                🔥 Hoy portas el Cobre… mañana conquistarás Bronce… luego Plata…<br>
+                🏆 Solo los que luchan sin rendirse alcanzan el Oro.<br>
+                💎 El Diamante Cósmico no se regala… se gana con valor.
+                </p>
+            </div>
+        </div>
+
+
+
+        <!-- ===== SECCIÓN REVISTA DESTACADA ===== -->
+        <div class="revista-section">
+
+            <div class="revista-img">
+                <img src="https://i.ibb.co/nN9tn9FR/SPEAK-LOCAL-MARZO-2025.png"
+             alt="Portada Revista Speak Local Marzo 2025"
+             loading="lazy">
+            </div>
+
+            <div class="revista-content">
+                <h2>📰 SPEAK LOCAL Magazine</h2>
+                <p>
+                    No te pierdas nuestra revista mensual de inmersión en inglés.
+                    Descubre cultura, nuevas expresiones y artículos exclusivos
+                    diseñados para mantener tu inglés activo.
+                </p>
+                
+            </div>
+
+        </div>
+
+        <!-- AVISO -->
+        <div class="notice">
+            Aviso importante: Revisa constantemente las nuevas actualizaciones del sistema.
+        </div>
+
+
+        <!-- SIDEBAR LATERAL -->
+        <div class="sidebar" id="sidebar">
+
+            <div class="toggle-btn" onclick="toggleSidebar()">
+                <i class="fas fa-chevron-right" id="arrowIcon"></i>
+            </div>
+
+            <a href="https://revistacps.github.io/MotorVideosPremium/"
+               class="side-item"
+               onclick="Analytics.evento('motor_videos_premium_click');">
+                <i class="fas fa-video"></i><span>Videos</span>
+            </a>
+
+            <a href="https://revistacps.github.io/motordistribucionvideos1/"
+               class="side-item"
+               onclick="Analytics.evento('clases_ingles_click');">
+                <i class="fas fa-book-open"></i><span>Clases "Inglés Básico"</span>
+            </a>
+
+            <a href="https://revistacps.github.io/MotordetemasA1/"
+               class="side-item"
+               onclick="Analytics.evento('motor_temas_click');">
+                <i class="fas fa-chalkboard-teacher"></i><span>Temas</span>
+            </a>
+            <a href="https://revistacps.github.io/MOTORDETRADUCCIONESESPACIALES/"
+               class="side-item"
+               onclick="Analytics.evento('motor_traducciones_click');">
+                <i class="fas fa-book"></i><span>Traducciones</span>
+            </a>
+
+           <a href="https://revistacps.github.io/Edicion-Especial-Ed.-001/"
+               class="side-item"
+               onclick="Analytics.evento('motor_revista_click');">
+                <i class="fas fa-book"></i><span>Revista</span>
+            </a>
+
+            <a href="https://revistacps.github.io/-Avisos-Importantes/"
+               class="side-item"
+               onclick="Analytics.evento('avisos_oportunos_click');">
+                <i class="fas fa-bell"></i><span>Avisos</span>
+            </a>
+
+            <a href="javascript:void(0)"
+               class="side-item"
+               onclick="Analytics.evento('portal_magico_click'); activarPremium();">
+                <i class="fas fa-crown"></i><span>Ingresar al Portal</span>
+            </a>
+
+        </div>
+
+
+        <!-- CONTENEDOR AZUL-MORADO -->
+
+        <div id="premiumOverlay"></div>
+
+        <div id="premiumContainer">
+
+            <!-- BOTONES DE VIDEOS PREMIUM -->
+            <h2>🌌 Portal Premium+</h2>
+
+            <p style="margin-top:15px; font-size:16px; line-height:1.6; opacity:0.95;">
+                🌌 Ser parte del <strong>Círculo Premium+</strong> no es solo acceder a contenido…
+                es entrar a un espacio secreto diseñado para mentes curiosas que buscan ir más allá. ✨
+            </p>
+
+            <p style="margin-top:15px; font-size:16px; line-height:1.6; opacity:0.9;">
+                🔑 Con una llave única, desbloquearás
+                <strong>temas secretos, juegos exclusivos, videos inéditos y más</strong>…
+                solo los iniciados descubrirán los portales ocultos que elevarán tu poder cósmico. 🌠
+            </p>
+
+            <p style="margin-top:15px; font-size:16px; line-height:1.6; opacity:0.9;">
+                🛡️ Domina cada desafío y prepárate para el próximo nivel, donde lo desconocido se convierte en tu
+                ventaja.
+                </strong> 👁️‍🗨️
+            </p>
+
+            <button onclick="cerrarPremium()" style="
+                margin-top:25px;
+                padding:10px 22px;
+                border:none;
+                border-radius:12px;
+                cursor:pointer;
+                background:white;
+                color:#6a00ff;
+                font-weight:bold;
+            ">
+                Cerrar
+            </button>
+        </div>
+
+        <!-- JS externo -->
+        
+        <!-- JS UNIFICADO -->
+        <script>
+            /* --- DARK MODE --- */
+function toggleDarkMode() {
+    document.body.classList.toggle("dark");
+}
+
+/* --- COUNTDOWN PERSISTENTE --- */
+document.addEventListener('DOMContentLoaded', () => {
+    const DURACION = 24 * 60 * 60 * 1000; // 24 horas en ms
+    let countDownDate = localStorage.getItem("countDownDate");
+
+    if (!countDownDate) {
+        countDownDate = Date.now() + DURACION;
+        localStorage.setItem("countDownDate", countDownDate);
+    } else {
+        countDownDate = parseInt(countDownDate);
+    }
+
+    const countdownElement = document.getElementById("countdown");
+    const countdownContainer = document.getElementById("timer-container");
+
+    if (countdownElement && countdownContainer) {
+        const intervalo = setInterval(() => {
+            const now = Date.now();
+            const distance = countDownDate - now;
+
+            if (distance <= 0) {
+                clearInterval(intervalo);
+                localStorage.removeItem("countDownDate");
+                countdownContainer.style.display = "none";
+                return;
+            }
+
+            const hours = Math.floor((distance % (1000*60*60*24)) / (1000*60*60));
+            const minutes = Math.floor((distance % (1000*60*60)) / (1000*60));
+            const seconds = Math.floor((distance % (1000*60)) / 1000);
+
+            countdownElement.innerHTML = `${hours}h ${minutes}m ${seconds}s`;
+        }, 1000);
+    }
+});
+
+/* --- SIDEBAR --- */
+function toggleSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    const arrow = document.getElementById("arrowIcon");
+    sidebar.classList.toggle("active");
+    if (sidebar.classList.contains("active")) {
+        arrow.classList.remove("fa-chevron-right");
+        arrow.classList.add("fa-chevron-left");
+        Analytics.evento("sidebar_open", {
+                    estado: "abierto"
+                });
+    } else {
+        arrow.classList.remove("fa-chevron-left");
+        arrow.classList.add("fa-chevron-right");
+        Analytics.evento("sidebar_close", {
+            estado: "cerrado"
+        });
+    }
+}
+
+/* --- PREMIUM OVERLAY --- */
+
+
+function activarPremium() {
+
+    Analytics.evento('portal_premium');
+
+    const overlay = document.getElementById('premiumOverlay');
+    const container = document.getElementById('premiumContainer');
+
+    overlay.style.display = 'block';
+    container.style.display = 'block';
+
+    setTimeout(() => container.classList.add('active'), 50);
+}
+
+function cerrarPremium() {
+    const overlay = document.getElementById('premiumOverlay');
+    const container = document.getElementById('premiumContainer');
+
+    container.classList.remove('active');
+
+    setTimeout(() => {
+        overlay.style.display = 'none';
+        container.style.display = 'none';
+    }, 600);
+}
+
+  // Activar o desactivar modo oscuro
+  function toggleDarkMode() {
+      const body = document.body;
+      body.classList.toggle('dark');
+
+      // Guardar el estado en localStorage
+      if (body.classList.contains('dark')) {
+          localStorage.setItem('darkMode', 'true');
+      } else {
+          localStorage.setItem('darkMode', 'false');
+      }
+  }
+
+          // Al cargar la página, leer la preferencia
+        window.addEventListener('DOMContentLoaded', () => {
+
+                Analytics.evento('home_open');
+            
+                const darkMode = localStorage.getItem('darkMode');
+            
+                if (darkMode === 'true') {
+                    document.body.classList.add('dark');
+                }
+            });
+            // ==============================
+// REGISTRAR SERVICE WORKER
+// ==============================
+
+if ('serviceWorker' in navigator) {
+
+    window.addEventListener('load', () => {
+
+        navigator.serviceWorker
+            .register('./service-worker.js')
+
+            .then((registro) => {
+
+                console.log("✅ Service Worker registrado.");
+
+            })
+
+            .catch((error) => {
+
+                console.error("❌ Error al registrar Service Worker:", error);
+
+            });
+
+    });
+
+}
+
+// ==============================
+// INSTALACIÓN OFICIAL PWA
+// ==============================
+
+let deferredPrompt = null;
+
+window.addEventListener("beforeinstallprompt", (e) => {
+
+    e.preventDefault();
+
+    deferredPrompt = e;
+
+    console.log("✅ PWA lista para instalar.");
+
+});
+
+function abrirModal() {
+
+    if (deferredPrompt) {
+
+        deferredPrompt.prompt();
+
+        return;
+
+    }
+
+    const modal = document.getElementById("modalInstalar");
+
+    if (modal) {
+
+        modal.style.display = "flex";
+
+    }
+
+}
+
+function cerrarModal() {
+
+    const modal = document.getElementById("modalInstalar");
+
+    if (modal) {
+        modal.style.display = "none";
+    }
+
+}
+
+</script>
+            
+        </script>
+
+        </script>
+</body>
+
+</html>
