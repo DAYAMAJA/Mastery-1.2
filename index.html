@@ -1884,13 +1884,27 @@ function registrarEvento(nombre, datos = {}) {
 
         <!-- CLASE 3 / VIDEO -->
         <div class="class-box">
-            <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;">
-                <iframe
-                    src="https://www.youtube.com/embed/GisjPwsvnAk?autoplay=1&mute=1&controls=0&loop=1&playlist=Nyw02xZFEH0"
-                    style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
-                    allow="autoplay; encrypted-media" allowfullscreen>
-                </iframe>
-            </div>
+           <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;">
+                <video
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    controls
+                    preload="metadata"
+                    style="position:absolute;
+                           top:0;
+                           left:0;
+                           width:100%;
+                           height:100%;
+                           object-fit:cover;
+                           border-radius:12px;">
+                      <source
+                        src="https://firebasestorage.googleapis.com/v0/b/app-libra-4746f.firebasestorage.app/o/Videos%20de%20app%20Mastery%20English%2FA%20Secret%20Ingredient%201%20%5B1%5D.MP4?alt=media&token=a81d3be7-6a91-4645-ae60-046b893af78b"
+                        type="video/mp4">
+                             Tu navegador necesita actualizarse para reproducir este video.
+                   </video>
+               </div>
             <h3 style="text-align:center; margin-top:10px;">Clase 3</h3>
             <a href="https://revistacps.github.io/Kunfupanda1/"
                class="lesson-button"
