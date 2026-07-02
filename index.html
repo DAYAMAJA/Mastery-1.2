@@ -1841,12 +1841,26 @@ function registrarEvento(nombre, datos = {}) {
         <!-- CLASE 1 / VIDEO -->
         <div class="class-box">
             <div style="position:relative;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;">
-                <iframe
-                    src="https://www.youtube.com/embed/vi8C6Gpa1Ho?autoplay=1&mute=1&controls=0&loop=1&playlist=vi8C6Gpa1Ho"
-                    style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
-                    allow="autoplay; encrypted-media" allowfullscreen>
-                </iframe>
-            </div>
+                    <video
+                        autoplay
+                        muted
+                        loop
+                        playsinline
+                        controls
+                        preload="metadata"
+                        style="position:absolute;
+                               top:0;
+                               left:0;
+                               width:100%;
+                               height:100%;
+                               object-fit:cover;
+                               border-radius:12px;">
+                         <source
+                            src="https://firebasestorage.googleapis.com/v0/b/app-libra-4746f.firebasestorage.app/o/Videos%20de%20app%20Mastery%20English%2FMegan.mp4?alt=media&token=948f4ccb-0ad2-4352-b59d-bd1d0aa3ca02"
+                            type="video/mp4">
+                                  Tu navegador necesita actualizarse para reproducir este video.
+                     </video>
+                 </div>
             <h3 style="text-align:center; margin-top:10px;">Clase 1</h3>
             <a href="https://revistacps.github.io/Video-megan-1/"
                class="lesson-button"
